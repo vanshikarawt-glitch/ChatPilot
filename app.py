@@ -519,19 +519,24 @@ if user_input:
                     or "Sorry, I could not generate an answer."
                 )
 
-            except Exception as e:
+                        except Exception as e:
 
                 error_occurred = True
+
+                error_code = getattr(
+                    e, "code",
+                    getattr(e, "status_code", "Unknown")
+                )
 
                 print(
                     "Gemini API Error:",
                     type(e).__name__,
-                    str(e)
+                    error_code
                 )
 
                 bot_reply = (
-                    "Sorry! AI is temporarily unavailable. "
-                    "Please try again later."
+                    f"AI Error: {type(e).__name__} "
+                    f"(Code: {error_code})"
                 )
 
         st.write(bot_reply)
