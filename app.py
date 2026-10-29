@@ -519,7 +519,7 @@ if user_input:
                     or "Sorry, I could not generate an answer."
                 )
 
-                        except Exception as e:
+            except Exception as e:
 
                 error_occurred = True
 
